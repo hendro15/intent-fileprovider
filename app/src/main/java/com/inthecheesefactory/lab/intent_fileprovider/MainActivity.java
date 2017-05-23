@@ -158,7 +158,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             // Continue only if the File was successfully created
             if (photoFile != null) {
-                Uri photoURI = Uri.fromFile(createImageFile());
+//                Uri photoURI = Uri.fromFile(createImageFile());
+                Uri photoURI = FileProvider.getUriForFile(MainActivity.this,
+                        BuildConfig.APPLICATION_ID + ".provider",
+                        createImageFile());
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
             }
